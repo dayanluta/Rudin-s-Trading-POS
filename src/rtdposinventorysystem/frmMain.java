@@ -5,6 +5,8 @@
  */
 package rtdposinventorysystem;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author ACC
@@ -16,6 +18,9 @@ public class frmMain extends javax.swing.JFrame {
      */
     public frmMain() {
         initComponents();
+        mnBar.setVisible(false);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        lblError.setVisible(false);
     }
 
     /**
@@ -27,45 +32,400 @@ public class frmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        pnlMain = new javax.swing.JPanel();
+        pnlLogin = new javax.swing.JPanel();
+        pnlLoginForm = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
+        btnClear = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
+        ckbShowPassword = new javax.swing.JCheckBox();
+        jLabel8 = new javax.swing.JLabel();
+        lblCapsLock = new javax.swing.JLabel();
+        lblError = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
+        pnlAdmin = new javax.swing.JPanel();
+        pnlCenter = new javax.swing.JPanel();
+        pnlCenterDisplay = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        pnlTop = new javax.swing.JPanel();
+        jToolBar1 = new javax.swing.JToolBar();
+        jButton1 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
+        jButton2 = new javax.swing.JButton();
+        pnlStatusBar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        pnlLeftMenu = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        mnBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 865, Short.MAX_VALUE)
+        pnlMain.setLayout(new java.awt.CardLayout());
+
+        pnlLogin.setLayout(new javax.swing.OverlayLayout(pnlLogin));
+
+        pnlLoginForm.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(248, 192, 61), 5, true));
+        pnlLoginForm.setMaximumSize(new java.awt.Dimension(450, 250));
+        pnlLoginForm.setPreferredSize(new java.awt.Dimension(600, 450));
+        pnlLoginForm.setRequestFocusEnabled(false);
+        pnlLoginForm.setLayout(new java.awt.BorderLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Username:");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Password:");
+
+        txtUsername.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsernameFocusGained(evt);
+            }
+        });
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsernameKeyPressed(evt);
+            }
+        });
+
+        txtPassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusGained(evt);
+            }
+        });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
+
+        btnClear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/clear_icon.png"))); // NOI18N
+        btnClear.setText("CLEAR");
+        btnClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        btnLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check_icon.png"))); // NOI18N
+        btnLogin.setText("LOGIN");
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+
+        ckbShowPassword.setText("Show password");
+        ckbShowPassword.setOpaque(false);
+        ckbShowPassword.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ckbShowPasswordItemStateChanged(evt);
+            }
+        });
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/change_password1.png"))); // NOI18N
+
+        lblCapsLock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/warning.png"))); // NOI18N
+        lblCapsLock.setText("Caps Lock is on");
+
+        lblError.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblError.setForeground(new java.awt.Color(255, 0, 0));
+        lblError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblError.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/error.png"))); // NOI18N
+        lblError.setText("Incorrect Username/Password!");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblCapsLock)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(ckbShowPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                        .addComponent(txtPassword))
+                                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 551, Short.MAX_VALUE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ckbShowPassword)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCapsLock, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        pnlLoginForm.add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        jPanel4.setPreferredSize(new java.awt.Dimension(303, 35));
+        jPanel4.setLayout(new java.awt.GridLayout());
+
+        lblTitle.setBackground(new java.awt.Color(248, 192, 61));
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("<<USER LOGIN>>");
+        lblTitle.setOpaque(true);
+        jPanel4.add(lblTitle);
+
+        pnlLoginForm.add(jPanel4, java.awt.BorderLayout.PAGE_START);
+
+        pnlLogin.add(pnlLoginForm);
+
+        pnlMain.add(pnlLogin, "card3");
+
+        pnlAdmin.setLayout(new java.awt.BorderLayout());
+
+        pnlCenter.setBackground(new java.awt.Color(255, 255, 255));
+        pnlCenter.setLayout(new java.awt.BorderLayout());
+
+        pnlCenterDisplay.setOpaque(false);
+        pnlCenterDisplay.setLayout(new java.awt.CardLayout());
+        pnlCenter.add(pnlCenterDisplay, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setPreferredSize(new java.awt.Dimension(715, 35));
+        jPanel2.setLayout(new java.awt.GridLayout());
+
+        jLabel6.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText(" WELCOME");
+        jLabel6.setOpaque(true);
+        jPanel2.add(jLabel6);
+
+        pnlCenter.add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        pnlAdmin.add(pnlCenter, java.awt.BorderLayout.CENTER);
+
+        pnlTop.setPreferredSize(new java.awt.Dimension(865, 50));
+        pnlTop.setLayout(new java.awt.GridLayout());
+
+        jToolBar1.setRollover(true);
+
+        jButton1.setText("Add");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton1);
+        jToolBar1.add(jSeparator1);
+
+        jButton2.setText("View");
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton2);
+
+        pnlTop.add(jToolBar1);
+
+        pnlAdmin.add(pnlTop, java.awt.BorderLayout.PAGE_START);
+
+        pnlStatusBar.setPreferredSize(new java.awt.Dimension(865, 35));
+        pnlStatusBar.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        jLabel1.setText(" Copyright 2018 by Thesis");
+        pnlStatusBar.add(jLabel1);
+
+        pnlAdmin.add(pnlStatusBar, java.awt.BorderLayout.PAGE_END);
+
+        pnlLeftMenu.setPreferredSize(new java.awt.Dimension(150, 466));
+        pnlLeftMenu.setLayout(new java.awt.BorderLayout());
+
+        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jButton3.setText("PRODUCTS");
+        jButton3.setMaximumSize(new java.awt.Dimension(150, 35));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton3);
+
+        jButton4.setText("INVENTORY");
+        jButton4.setMaximumSize(new java.awt.Dimension(150, 35));
+        jPanel5.add(jButton4);
+
+        pnlLeftMenu.add(jPanel5, java.awt.BorderLayout.CENTER);
+
+        jPanel6.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel6.setPreferredSize(new java.awt.Dimension(150, 35));
+        jPanel6.setLayout(new java.awt.GridLayout());
+
+        jLabel2.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("CHOOE A MENU:");
+        jPanel6.add(jLabel2);
+
+        pnlLeftMenu.add(jPanel6, java.awt.BorderLayout.PAGE_START);
+
+        pnlAdmin.add(pnlLeftMenu, java.awt.BorderLayout.LINE_START);
+
+        pnlMain.add(pnlAdmin, "card2");
+
+        jMenu1.setText("Admin");
+
+        jMenuItem1.setText("User Account");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        mnBar.add(jMenu1);
 
         jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        mnBar.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(mnBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsernameFocusGained
+       // CommonGUISettingsMethod.CapsLock(lblCapsLock, new javax.swing.ImageIcon(getClass().getResource("/images/warning.png")));
+    }//GEN-LAST:event_txtUsernameFocusGained
+
+    private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyPressed
+        /*
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            SystemLogin();
+        } //else if (evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK) {
+            CommonGUISettingsMethod.CapsLock(lblCapsLock, new javax.swing.ImageIcon(getClass().getResource("/images/warning.png")));
+            */
+    }//GEN-LAST:event_txtUsernameKeyPressed
+
+    private void txtPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusGained
+        //CommonGUISettingsMethod.CapsLock(lblCapsLock, new javax.swing.ImageIcon(getClass().getResource("/images/warning.png")));
+    }//GEN-LAST:event_txtPasswordFocusGained
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        /*
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            SystemLogin();
+        } //else if (evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK) {
+            CommonGUISettingsMethod.CapsLock(lblCapsLock, new javax.swing.ImageIcon(getClass().getResource("/images/warning.png")));
+            */
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        txtUsername.setText("");
+        txtPassword.setText("");
+        lblError.setVisible(false);
+        txtUsername.requestFocus();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        //SystemLogin();
+        //successLogin
+        pnlMain.removeAll();
+        pnlMain.add(pnlAdmin);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+        mnBar.setVisible(true);
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void ckbShowPasswordItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckbShowPasswordItemStateChanged
+        if (ckbShowPassword.isSelected()) {
+            txtPassword.setEchoChar((char) 0);
+        } else {
+            txtPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_ckbShowPasswordItemStateChanged
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        pnlUserAccount account = new pnlUserAccount();
+        pnlCenterDisplay.removeAll();
+        pnlCenterDisplay.add(account);
+        pnlCenterDisplay.repaint();
+        pnlCenterDisplay.revalidate();
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         pnlProduct product = new pnlProduct();
+        pnlCenterDisplay.removeAll();
+        pnlCenterDisplay.add(product);
+        pnlCenterDisplay.repaint();
+        pnlCenterDisplay.revalidate();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -76,6 +436,7 @@ public class frmMain extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        /*
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -92,6 +453,7 @@ public class frmMain extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(frmMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        */
         //</editor-fold>
 
         /* Create and display the form */
@@ -103,9 +465,43 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JCheckBox ckbShowPassword;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblCapsLock;
+    private javax.swing.JLabel lblError;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JMenuBar mnBar;
+    private javax.swing.JPanel pnlAdmin;
+    private javax.swing.JPanel pnlCenter;
+    private javax.swing.JPanel pnlCenterDisplay;
+    private javax.swing.JPanel pnlLeftMenu;
+    private javax.swing.JPanel pnlLogin;
+    private javax.swing.JPanel pnlLoginForm;
+    private javax.swing.JPanel pnlMain;
+    private javax.swing.JPanel pnlStatusBar;
+    private javax.swing.JPanel pnlTop;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
