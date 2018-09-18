@@ -411,7 +411,7 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_ckbShowPasswordItemStateChanged
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        pnlUserAccount account = new pnlUserAccount();
+        pnlUserAccount account = new pnlUserAccount(this);
         pnlCenterDisplay.removeAll();
         pnlCenterDisplay.add(account);
         pnlCenterDisplay.repaint();
