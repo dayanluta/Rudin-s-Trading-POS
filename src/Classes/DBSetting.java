@@ -22,7 +22,7 @@ public class DBSetting {
     //public static final String db_ip="192.168.1.145";
     public static final String db_ip = "localhost";
     //public static final String db_paswd ="MISa6c9c72";
-    public static final String db_paswd = "POSTGRES";
+    public static final String db_paswd = "yanie";
     public static final String db_driver = "org.postgresql.Driver";
     public static final String db_url = "jdbc:postgresql://" + db_ip + ":5432/RPTI_DATABASE0906";
     

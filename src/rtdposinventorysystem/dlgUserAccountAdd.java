@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package rtdposinventorysystem;
+
+import Classes.DBQueries;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,16 +17,19 @@ package rtdposinventorysystem;
  */
 public class dlgUserAccountAdd extends javax.swing.JDialog {
 
-    /**
-     * Creates new form dlgUserAccountAdd
-     */
+    frmMain main;
+    pnlUserAccount main1;
+    String dat = "";
+
     public dlgUserAccountAdd(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
+
     dlgUserAccountAdd(frmMain parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.main = parent;
     }
 
     /**
@@ -37,6 +45,20 @@ public class dlgUserAccountAdd extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        USERNAME = new javax.swing.JLabel();
+        PASSWORD = new javax.swing.JLabel();
+        CONFIRM = new javax.swing.JLabel();
+        fullname = new javax.swing.JLabel();
+        ROLE = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        txtusername = new javax.swing.JTextField();
+        txtpassword = new javax.swing.JPasswordField();
+        confirmpassword = new javax.swing.JPasswordField();
+        txtfullname = new javax.swing.JTextField();
+        comborole = new javax.swing.JComboBox();
+        ADD = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -47,25 +69,102 @@ public class dlgUserAccountAdd extends javax.swing.JDialog {
         jPanel2.setLayout(new java.awt.BorderLayout());
         jPanel2.add(jSeparator1, java.awt.BorderLayout.PAGE_START);
 
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+
+        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel5.setLayout(new java.awt.GridLayout(5, 0));
+
+        USERNAME.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        USERNAME.setText("USERNAME:");
+        jPanel5.add(USERNAME);
+
+        PASSWORD.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        PASSWORD.setText("PASSWORD:");
+        jPanel5.add(PASSWORD);
+
+        CONFIRM.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CONFIRM.setText("CONFIRM PASSWORD:");
+        jPanel5.add(CONFIRM);
+
+        fullname.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        fullname.setText("FULLNAME:");
+        jPanel5.add(fullname);
+
+        ROLE.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ROLE.setText("ROLE:");
+        jPanel5.add(ROLE);
+
+        jPanel6.setLayout(new java.awt.GridLayout(5, 0));
+
+        txtusername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanel6.add(txtusername);
+
+        txtpassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanel6.add(txtpassword);
+
+        confirmpassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanel6.add(confirmpassword);
+
+        txtfullname.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanel6.add(txtfullname);
+
+        comborole.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        comborole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-SELECT-", "CASHIER", "ADMINISTRATOR" }));
+        jPanel6.add(comborole);
+
+        ADD.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ADD.setText("ADD");
+        ADD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ADDActionPerformed(evt);
+            }
+        });
+
+        cancel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cancel.setText("CANCEL");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ADD, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 342, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ADD, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel4, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
+        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
         jPanel3.setPreferredSize(new java.awt.Dimension(400, 50));
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("  ADDING NEW USER");
         jPanel3.add(jLabel1);
 
@@ -79,12 +178,81 @@ public class dlgUserAccountAdd extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADDActionPerformed
+        String fullname = txtfullname.getText();
+        String username = txtusername.getText();
+        String password = txtpassword.getText();
+//       String confirm = passwordconfirm.getText();
+        String role = comborole.getSelectedItem().toString();
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        dat = dateFormat.format(date);
+
+        if (fullname.trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Enter Fullname!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtfullname.requestFocus();
+            return;
+        }
+
+        if (username.trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Enter Username!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtusername.requestFocus();
+            return;
+        }
+
+        if (password.trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Enter password!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtpassword.requestFocus();
+            return;
+        }
+
+        if (comborole.getSelectedItem().equals("-Select-")) {
+            JOptionPane.showMessageDialog(this, "Please Select!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            comborole.requestFocus();
+            return;
+        }
+
+        DBQueries database = new DBQueries(); //conneting database
+
+        try {
+            database.ConnectToDatabase();
+            database.checkUsername(username);
+            if (database.rs.next()) {
+                JOptionPane.showMessageDialog(null, "Username:" + username + "Already exist!!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtusername.requestFocus();
+                txtusername.selectAll();
+                //this process check if the username already exist in the database.
+            } else {
+                int i = database.insertNewUserAccount(username, password, fullname, role);
+                if (i > 0) {
+                    JOptionPane.showMessageDialog(null, "Inserted Successfully", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+                    txtusername.setText("");
+                    txtpassword.setText("");
+//                   main1.refresh();
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Insert Failed", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            if (database.con != null) {
+                database.closeConnection();
+            }
+
+        }
+
+
+    }//GEN-LAST:event_ADDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,11 +297,25 @@ public class dlgUserAccountAdd extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ADD;
+    private javax.swing.JLabel CONFIRM;
+    private javax.swing.JLabel PASSWORD;
+    private javax.swing.JLabel ROLE;
+    private javax.swing.JLabel USERNAME;
+    private javax.swing.JButton cancel;
+    private javax.swing.JComboBox comborole;
+    private javax.swing.JPasswordField confirmpassword;
+    private javax.swing.JLabel fullname;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField txtfullname;
+    private javax.swing.JPasswordField txtpassword;
+    private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 }
