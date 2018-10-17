@@ -83,6 +83,7 @@ public class dlgChangeStatus extends javax.swing.JDialog {
         jPanel6.add(txtusername);
 
         updateStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        updateStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save 1.png"))); // NOI18N
         updateStatus.setText("SAVE");
         updateStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +92,7 @@ public class dlgChangeStatus extends javax.swing.JDialog {
         });
 
         cancel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel.png"))); // NOI18N
         cancel.setText("CANCEL");
 
         RActive.setBackground(new java.awt.Color(204, 204, 204));
@@ -169,8 +171,8 @@ public class dlgChangeStatus extends javax.swing.JDialog {
                 .addComponent(RReset)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updateStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
 

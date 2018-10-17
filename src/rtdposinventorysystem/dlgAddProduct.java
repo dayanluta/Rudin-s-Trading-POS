@@ -51,21 +51,10 @@ public class dlgAddProduct extends javax.swing.JDialog {
             Connection con = DriverManager.getConnection(DBSetting.db_url, DBSetting.db_user, DBSetting.db_paswd);
             Statement st = con.createStatement();
 
-//            String sql = "insert into PRODUCT.product_table values(" + prod_id.getText() + ","
-//                    + "'" + prod_dess.getText() + "','" + retail.getText() + "','" + datepurchase.getDate() + "'"
-//                    + ",'" + Integer.parseInt(quantity.getText()) + "','" + Integer.parseInt(invoicenumber.getText().toString()) + "',"
-//                    + "'" + Double.parseDouble(cost_price1.getText()) + "','" + warn.getText() + "','" + discount1.getText() + "','" + expirationdate.getDate() + "'"
-//                    + "'" + Double.parseDouble(txtsubtotal.getText()) + "',(SELECT category_id from PRODUCT.category_table where category_name='" + combocategory.getSelectedItem() + "'),(SELECT brand_code FROM PRODUCT.brand_table where brand_name='" + combobrand.getSelectedItem() + "'),(SELECT unit_code FROM PRODUCT.unit_table where unit_name= '" + combounit.getSelectedItem() + "'),"
-//                    + "(SELECT color_code FROM PRODUCT.color_table WHERE color_name='" + combocolor.getSelectedItem() + "'),(SELECT sup_id FROM SUPPLIER.supplier_table where sup_name='" + suppliercombo.getSelectedItem() + "'))";
-//                String sql = "insert into PRODUCT.product_table values(" + prod_id.getText() + ","
-//                        + "'" + prod_dess.getText() + "','" + retail.getText() + "','" + datepurchase.getDate() + "'"
-//                        + ",'" + Integer.parseInt(quantity.getText()) + "','" + Integer.parseInt(invoicenumber.getText().toString()) + "',"
-//                        + "'" + Double.parseDouble(cost_price1.getText()) + "','" + warn.getText() + "','" + discount1.getText() + "','" + expirationdate.getDate() + "',"
-//                        + "'" + Double.parseDouble(txtsubtotal.getText()) + "',(SELECT category_id from PRODUCT.category_table where category_name='" + combocategory.getSelectedItem() + "'),(SELECT brand_code FROM PRODUCT.brand_table where brand_name='" + combobrand.getSelectedItem() + "'),(SELECT unit_code FROM PRODUCT.unit_table where unit_name= '" + combounit.getSelectedItem() + "'),"
-//                        + "(SELECT color_code FROM PRODUCT.color_table WHERE color_name='" + combocolor.getSelectedItem() + "'),(SELECT sup_id FROM SUPPLIER.supplier_table where sup_name='" + suppliercombo.getSelectedItem() + "'))";
+//            
             String sql = "Insert into PRODUCT.product_table values('" +prod_id.getText()+ "', '" +prod_dess.getText() + "', '" +retail.getText() + "',"
                     + " '" + datepurchase.getDate()+ "', " +Integer.parseInt(quantity.getText().toString()) + ","+Double.parseDouble(cost_price1.getText().toString())+","
-                    + ""+Double.parseDouble(discount1.getText().toString())+" ,"+Double.parseDouble(txtsubtotal.getText())+","
+                    + ""+Double.parseDouble(discount1.getText().toString())+","
                     + "(SELECT category_id from PRODUCT.category_table where category_name='"+combocategory.getSelectedItem()+"'),(SELECT brand_code FROM PRODUCT.brand_table where brand_name = '"+combobrand.getSelectedItem()+"'),"
                     + "(SELECT unit_code FROM PRODUCT.unit_table where unit_name = '"+combounit.getSelectedItem()+"'), (SELECT color_code FROM PRODUCT.color_table where color_name = '"+combocolor.getSelectedItem()+"'),"
                     + "(SELECT sup_id FROM SUPPLIER.supplier_table where sup_name ='"+suppliercombo.getSelectedItem()+"'), '"+expirationdate.getDate()+"', "+Integer.parseInt(invoicenumber.getText().toString())+"," +Integer.parseInt(warn.getText().toString()) + ")";
@@ -227,14 +216,12 @@ public class dlgAddProduct extends javax.swing.JDialog {
         retailprice = new javax.swing.JLabel();
         warnlevel = new javax.swing.JLabel();
         discount = new javax.swing.JLabel();
-        subtotal = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         quantity = new javax.swing.JTextField();
         cost_price1 = new javax.swing.JTextField();
         retail = new javax.swing.JTextField();
         warn = new javax.swing.JTextField();
         discount1 = new javax.swing.JTextField();
-        txtsubtotal = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         saveNewProduct = new javax.swing.JButton();
 
@@ -342,11 +329,11 @@ public class dlgAddProduct extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 390, 200));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 390, 220));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Purchase Details", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         jPanel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -408,7 +395,7 @@ public class dlgAddProduct extends javax.swing.JDialog {
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Amount Details", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        jPanel9.setLayout(new java.awt.GridLayout(6, 0));
+        jPanel9.setLayout(new java.awt.GridLayout(5, 0));
 
         qty.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         qty.setText("Qty:");
@@ -430,11 +417,7 @@ public class dlgAddProduct extends javax.swing.JDialog {
         discount.setText("Discount:");
         jPanel9.add(discount);
 
-        subtotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        subtotal.setText("Sub-total:");
-        jPanel9.add(subtotal);
-
-        jPanel10.setLayout(new java.awt.GridLayout(6, 0));
+        jPanel10.setLayout(new java.awt.GridLayout(5, 0));
 
         quantity.setBackground(new java.awt.Color(240, 240, 240));
         quantity.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -471,16 +454,6 @@ public class dlgAddProduct extends javax.swing.JDialog {
         discount1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel10.add(discount1);
 
-        txtsubtotal.setBackground(new java.awt.Color(240, 240, 240));
-        txtsubtotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtsubtotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtsubtotal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtsubtotalKeyReleased(evt);
-            }
-        });
-        jPanel10.add(txtsubtotal);
-
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -505,22 +478,24 @@ public class dlgAddProduct extends javax.swing.JDialog {
         getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 230, 180));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel.png"))); // NOI18N
         jButton1.setText("CANCEL");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 470, 120, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 470, 128, 42));
 
         saveNewProduct.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        saveNewProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save 1.png"))); // NOI18N
         saveNewProduct.setText("SAVE");
         saveNewProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveNewProductActionPerformed(evt);
             }
         });
-        getContentPane().add(saveNewProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 120, 40));
+        getContentPane().add(saveNewProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 128, 42));
 
         pack();
         setLocationRelativeTo(null);
@@ -529,6 +504,7 @@ public class dlgAddProduct extends javax.swing.JDialog {
 
     private void saveNewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveNewProductActionPerformed
         String prod_code = prod_id.getText();
+//        String prodName = prod_name.getText();
         String category = combocategory.getSelectedItem().toString();
         String brand = combobrand.getSelectedItem().toString();
         String description = prod_dess.getText();
@@ -543,7 +519,7 @@ public class dlgAddProduct extends javax.swing.JDialog {
         double retail_price = Double.parseDouble(retail.getText().toString());
         int warn_level = Integer.parseInt(warn.getText().toString());
         double discount = Double.parseDouble(discount1.getText().toString());
-        double sub_total = Double.parseDouble(txtsubtotal.getText().toString());
+//        double sub_total = Double.parseDouble(txtsubtotal.getText().toString());
         //VALIDATION
         if (prod_code.trim().equals("")) {
             Toolkit.getDefaultToolkit().beep();
@@ -551,6 +527,14 @@ public class dlgAddProduct extends javax.swing.JDialog {
             prod_id.requestFocus();
             return;
         }
+        
+//        if(prodName.trim().equals("")){
+//            Toolkit.getDefaultToolkit().beep();
+//            JOptionPane.showMessageDialog(this, "Please Enter Product Name!", "ERROR", JOptionPane.ERROR_MESSAGE);
+//            prod_name.requestFocus();
+//            return;
+//        }
+        
         if (category.equals("-Select-")) {
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(this, "Please select Category Name!", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -657,17 +641,18 @@ public class dlgAddProduct extends javax.swing.JDialog {
             return;
         }
 
-        if (txtsubtotal.getText().trim().equals("")) {
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(this, "Please enter subtotal to zero if none!", "ERROR", JOptionPane.ERROR_MESSAGE);
-            txtsubtotal.requestFocus();
-            txtsubtotal.requestFocus();
-            return;
-        }
+//        if (txtsubtotal.getText().trim().equals("")) {
+//            Toolkit.getDefaultToolkit().beep();
+//            JOptionPane.showMessageDialog(this, "Please enter subtotal to zero if none!", "ERROR", JOptionPane.ERROR_MESSAGE);
+//            txtsubtotal.requestFocus();
+//            txtsubtotal.requestFocus();
+//            return;
+//        }
 
         int CONFIRM = JOptionPane.showConfirmDialog(this, "Are all information Correct?", "CONFIRM", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (CONFIRM == JOptionPane.YES_OPTION) {
             saveProduct();
+            dispose();
         }
 
 
@@ -692,7 +677,7 @@ public class dlgAddProduct extends javax.swing.JDialog {
             retail.setText("" + formatter.format(totalRetailPrice));
             int qty = Integer.parseInt(qty1);
             double sub = costprice1 * qty;
-            txtsubtotal.setText(""+formatter.format(sub));
+//            txtsubtotal.setText(""+formatter.format(sub));
           
             
             
@@ -710,11 +695,6 @@ public class dlgAddProduct extends javax.swing.JDialog {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtsubtotalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsubtotalKeyReleased
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtsubtotalKeyReleased
 
     private void combocategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocategoryActionPerformed
         // TODO add your handling code here:
@@ -838,10 +818,8 @@ public class dlgAddProduct extends javax.swing.JDialog {
     private javax.swing.JTextField retail;
     private javax.swing.JLabel retailprice;
     private javax.swing.JButton saveNewProduct;
-    private javax.swing.JLabel subtotal;
     private javax.swing.JLabel supplier;
     private javax.swing.JComboBox suppliercombo;
-    private javax.swing.JTextField txtsubtotal;
     private javax.swing.JLabel unit;
     private javax.swing.JTextField warn;
     private javax.swing.JLabel warnlevel;

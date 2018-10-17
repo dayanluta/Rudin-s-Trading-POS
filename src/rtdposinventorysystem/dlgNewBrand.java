@@ -20,6 +20,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class dlgNewBrand extends javax.swing.JDialog {
 
+    frmMain main;
+    frmMain updatebrand;
+
     /**
      * Creates new form dlgNewBrand
      */
@@ -32,13 +35,13 @@ public class dlgNewBrand extends javax.swing.JDialog {
 
     public void DisplayBrandNameToTable() {
         DBQueries database12 = new DBQueries();
-
+        DefaultTableModel model = (DefaultTableModel) brand_table.getModel(); //*cast to the table*//
         try {
 
             database12.ConnectToDatabase();
             /*inserting data to the database in the customer table*/
             database12.viewBrandName();
-            DefaultTableModel model = (DefaultTableModel) brand_table.getModel(); //*cast to the table*//
+            
                 /*displaying the data from database to the table in customer.java*/
             model.setRowCount(0);
             int i = 1;
@@ -49,13 +52,15 @@ public class dlgNewBrand extends javax.swing.JDialog {
                     database12.rs.getString("brand_name")
 
                 });
+                i++;
             }
-            i++;
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,6 +85,7 @@ public class dlgNewBrand extends javax.swing.JDialog {
         jPanel6 = new javax.swing.JPanel();
         brand_code = new javax.swing.JTextField();
         brand_name = new javax.swing.JTextField();
+        updateBrand = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -93,9 +99,11 @@ public class dlgNewBrand extends javax.swing.JDialog {
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save 1.png"))); // NOI18N
         jButton1.setText("CANCEL");
 
         saveBrandName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        saveBrandName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save 1.png"))); // NOI18N
         saveBrandName.setText("SAVE");
         saveBrandName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +153,15 @@ public class dlgNewBrand extends javax.swing.JDialog {
         brand_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPanel6.add(brand_name);
 
+        updateBrand.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        updateBrand.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/update.png"))); // NOI18N
+        updateBrand.setText("UPDATE");
+        updateBrand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBrandActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -153,15 +170,19 @@ public class dlgNewBrand extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 136, Short.MAX_VALUE)
-                        .addComponent(saveBrandName, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(updateBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(saveBrandName, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -173,10 +194,13 @@ public class dlgNewBrand extends javax.swing.JDialog {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveBrandName, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(updateBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(saveBrandName, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -232,6 +256,21 @@ public class dlgNewBrand extends javax.swing.JDialog {
         dispose();
 
     }//GEN-LAST:event_saveBrandNameActionPerformed
+
+    private void updateBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBrandActionPerformed
+        // TODO add your handling code here:
+        dlgUpdateNewBrand update = new dlgUpdateNewBrand(updatebrand, true);
+
+        int i = brand_table.getSelectedRow();
+        try {
+            update.setData(brand_table.getValueAt(i, 1).toString(), brand_table.getValueAt(i, 2).toString());
+            update.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Please Select a row");
+        }
+
+
+    }//GEN-LAST:event_updateBrandActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,5 +331,6 @@ public class dlgNewBrand extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton saveBrandName;
+    private javax.swing.JButton updateBrand;
     // End of variables declaration//GEN-END:variables
 }

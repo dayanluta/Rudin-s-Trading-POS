@@ -98,6 +98,7 @@ public class dlgEditUserAccount extends javax.swing.JDialog {
         jPanel3.add(comborole);
 
         update.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/update.png"))); // NOI18N
         update.setText("UPDATE");
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +107,7 @@ public class dlgEditUserAccount extends javax.swing.JDialog {
         });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel.png"))); // NOI18N
         jButton2.setText("CANCEL");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -120,9 +122,9 @@ public class dlgEditUserAccount extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(

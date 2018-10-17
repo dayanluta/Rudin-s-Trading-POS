@@ -3,8 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package rtdposinventorysystem;
+
+import Classes.DBQueries;
+import java.awt.HeadlessException;
+import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,9 +23,116 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
      * Creates new form dlgUpdateProduct
      */
     public dlgUpdateProduct(java.awt.Frame parent, boolean modal) {
+
         super(parent, modal);
         initComponents();
+
+       getCategoryName();
+       getBrandName();
+       getNewColor();
+       getUnitName();
     }
+
+    public void setData(String prodCode, String category, String brand, String description, String color, String unit, double cost_price, double retail_price,
+            double discount, int warnLevel) {
+        this.prod_id.setText(prodCode);
+        this.combocategory2.setSelectedItem(""+category);
+        this.combobrand2.setSelectedItem(""+brand);
+        this.prod_dess2.setText(description);
+        this.combocolor2.setSelectedItem(""+color);
+        this.combounit2.setSelectedItem(""+unit);
+        this.cost_price1.setText("" + cost_price);
+        this.retail.setText("" + retail_price);
+        this.warn.setText("" + warnLevel);
+
+        //this.Integer.parseInt(CUS_CONTACT.setText().toString());
+    }
+
+    void getCategoryName() {
+        DBQueries database7 = new DBQueries();
+        try {
+            database7.ConnectToDatabase();
+            database7.setCategoryName();
+//            combocategory.removeAllItems();
+            while (database7.rs.next()) {
+                combocategory2.addItem(database7.rs.getString(1));
+
+            }
+            combocategory2.addItem("New CategoryName");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            if (database7.con != null) {
+                database7.closeConnection();
+            }
+        }
+    }
+    
+    void getUnitName() {
+        DBQueries database22 = new DBQueries();
+        try {
+            database22.ConnectToDatabase();
+            database22.setNewUnitName();
+//            combounit.removeAllItems();
+            while (database22.rs.next()) {
+                combounit2.addItem(database22.rs.getString(1));
+
+            }
+            combounit2.addItem("New Unit Name");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            if (database22.con != null) {
+                database22.closeConnection();
+            }
+        }
+    }
+
+    void getNewColor() {
+        DBQueries database25 = new DBQueries();
+        try {
+            database25.ConnectToDatabase();
+            database25.setNewColor();
+//            combocolor.removeAllItems();
+            while (database25.rs.next()) {
+                combocolor2.addItem(database25.rs.getString(1));
+
+            }
+            combocolor2.addItem("New Color Name");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            if (database25.con != null) {
+                database25.closeConnection();
+            }
+        }
+    }
+
+    void getBrandName() {
+        DBQueries database16 = new DBQueries();
+        try {
+            database16.ConnectToDatabase();
+            database16.setBrandName();
+//            combobrand.removeAllItems();
+            while (database16.rs.next()) {
+                combobrand2.addItem(database16.rs.getString(1));
+
+            }
+            combobrand2.addItem("New Brand Name");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            if (database16.con != null) {
+                database16.closeConnection();
+            }
+        }
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +155,7 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
         color2 = new javax.swing.JLabel();
         unit2 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        prod_id2 = new javax.swing.JTextField();
+        prod_id = new javax.swing.JTextField();
         combocategory2 = new javax.swing.JComboBox();
         combobrand2 = new javax.swing.JComboBox();
         prod_dess2 = new javax.swing.JTextField();
@@ -49,27 +163,23 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
         combounit2 = new javax.swing.JComboBox();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
-        qty = new javax.swing.JLabel();
         costprice = new javax.swing.JLabel();
         retailprice = new javax.swing.JLabel();
-        warnlevel = new javax.swing.JLabel();
         discount = new javax.swing.JLabel();
-        subtotal = new javax.swing.JLabel();
+        warnlevel = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        quantity = new javax.swing.JTextField();
         cost_price1 = new javax.swing.JTextField();
         retail = new javax.swing.JTextField();
-        warn = new javax.swing.JTextField();
         discount1 = new javax.swing.JTextField();
-        txtsubtotal = new javax.swing.JTextField();
+        warn = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        updateProd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -110,7 +220,7 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
         jPanel10.add(unit2);
 
         jPanel11.setLayout(new java.awt.GridLayout(6, 0));
-        jPanel11.add(prod_id2);
+        jPanel11.add(prod_id);
 
         combocategory2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         combocategory2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-Select-" }));
@@ -177,11 +287,7 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
 
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Amount Details", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        jPanel13.setLayout(new java.awt.GridLayout(6, 0));
-
-        qty.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        qty.setText("Qty:");
-        jPanel13.add(qty);
+        jPanel13.setLayout(new java.awt.GridLayout(4, 0));
 
         costprice.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         costprice.setText("Cost Price:");
@@ -191,29 +297,15 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
         retailprice.setText("Retail Price:");
         jPanel13.add(retailprice);
 
-        warnlevel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        warnlevel.setText("Warn Level:");
-        jPanel13.add(warnlevel);
-
         discount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         discount.setText("Discount:");
         jPanel13.add(discount);
 
-        subtotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        subtotal.setText("Sub-total:");
-        jPanel13.add(subtotal);
+        warnlevel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        warnlevel.setText("Warn Level:");
+        jPanel13.add(warnlevel);
 
-        jPanel14.setLayout(new java.awt.GridLayout(6, 0));
-
-        quantity.setBackground(new java.awt.Color(240, 240, 240));
-        quantity.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        quantity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        quantity.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                quantityFocusLost(evt);
-            }
-        });
-        jPanel14.add(quantity);
+        jPanel14.setLayout(new java.awt.GridLayout(4, 0));
 
         cost_price1.setBackground(new java.awt.Color(240, 240, 240));
         cost_price1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -230,25 +322,20 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
         retail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel14.add(retail);
 
-        warn.setBackground(new java.awt.Color(240, 240, 240));
-        warn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        warn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel14.add(warn);
-
         discount1.setBackground(new java.awt.Color(240, 240, 240));
         discount1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         discount1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel14.add(discount1);
 
-        txtsubtotal.setBackground(new java.awt.Color(240, 240, 240));
-        txtsubtotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtsubtotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtsubtotal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtsubtotalKeyReleased(evt);
+        warn.setBackground(new java.awt.Color(240, 240, 240));
+        warn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        warn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        warn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                warnActionPerformed(evt);
             }
         });
-        jPanel14.add(txtsubtotal);
+        jPanel14.add(warn);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -266,14 +353,26 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         jButton1.setText("CANCEL");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("UPDATE");
+        updateProd.setText("UPDATE");
+        updateProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateProdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -290,7 +389,7 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(updateProd, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -306,13 +405,14 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
                         .addGap(31, 31, 31)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(updateProd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 420, 420));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void combocategory2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combocategory2ItemStateChanged
@@ -351,10 +451,6 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
 //        }
     }//GEN-LAST:event_combounit2ActionPerformed
 
-    private void quantityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quantityFocusLost
-
-    }//GEN-LAST:event_quantityFocusLost
-
     private void cost_price1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cost_price1KeyReleased
         // TODO add your handling code here:
 //        String cost_price = cost_price1.getText();
@@ -376,9 +472,56 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
 //        }
     }//GEN-LAST:event_cost_price1KeyReleased
 
-    private void txtsubtotalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsubtotalKeyReleased
+    public void comboDisplay() {
+        DBQueries combo = new DBQueries();
+
+    }
+
+    private void updateProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateProdActionPerformed
+
+        String prodCode = prod_id.getText();
+        String category = combocategory2.getSelectedItem().toString();
+        String brand = combobrand2.getSelectedItem().toString();
+        String description = prod_dess2.getText();
+        String unit1 = combounit2.getSelectedItem().toString();
+        double costprice = Double.parseDouble(cost_price1.getText().toString());
+        double retailprice = Double.parseDouble(retail.getText().toString());
+        double discount = Double.parseDouble(discount1.getText().toString());
+        int warning = Integer.parseInt(warn.getText().toString());
+
+        DBQueries dbUpdate = new DBQueries();
+        try {
+            dbUpdate.ConnectToDatabase();
+            int i = dbUpdate.UpdateProduct(prodCode, category, brand, description, unit1, costprice, retailprice, discount, warning);
+            if (i > 0) {
+                Toolkit.getDefaultToolkit().beep();
+                JOptionPane.showMessageDialog(null, "Updated Successfully!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                Toolkit.getDefaultToolkit().beep();
+                JOptionPane.showMessageDialog(null, "Update Failed!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (HeadlessException e) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            dbUpdate.closeConnection();
+        }
+
+
+    }//GEN-LAST:event_updateProdActionPerformed
+
+
+    private void warnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtsubtotalKeyReleased
+//        String prodCode = prod_id.getText();
+
+    }//GEN-LAST:event_warnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -423,70 +566,36 @@ public class dlgUpdateProduct extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel brand;
-    private javax.swing.JLabel brand1;
     private javax.swing.JLabel brand2;
-    private javax.swing.JLabel category;
-    private javax.swing.JLabel category1;
     private javax.swing.JLabel category2;
-    private javax.swing.JLabel color;
-    private javax.swing.JLabel color1;
     private javax.swing.JLabel color2;
-    private javax.swing.JComboBox combobrand;
-    private javax.swing.JComboBox combobrand1;
-    private javax.swing.JComboBox combobrand2;
-    private javax.swing.JComboBox combocategory;
-    private javax.swing.JComboBox combocategory1;
+    public javax.swing.JComboBox combobrand2;
     private javax.swing.JComboBox combocategory2;
-    private javax.swing.JComboBox combocolor;
-    private javax.swing.JComboBox combocolor1;
-    private javax.swing.JComboBox combocolor2;
-    private javax.swing.JComboBox combounit;
-    private javax.swing.JComboBox combounit1;
-    private javax.swing.JComboBox combounit2;
-    private javax.swing.JTextField cost_price1;
+    public javax.swing.JComboBox combocolor2;
+    public javax.swing.JComboBox combounit2;
+    public javax.swing.JTextField cost_price1;
     private javax.swing.JLabel costprice;
     private javax.swing.JLabel discount;
-    private javax.swing.JTextField discount1;
+    public javax.swing.JTextField discount1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
+    public javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JLabel prodDescription;
-    private javax.swing.JLabel prodDescription1;
     private javax.swing.JLabel prodDescription2;
-    private javax.swing.JTextField prod_dess;
-    private javax.swing.JTextField prod_dess1;
-    private javax.swing.JTextField prod_dess2;
-    private javax.swing.JTextField prod_id;
-    private javax.swing.JTextField prod_id1;
-    private javax.swing.JTextField prod_id2;
-    private javax.swing.JLabel productID;
-    private javax.swing.JLabel productID1;
+    public javax.swing.JTextField prod_dess2;
+    public static javax.swing.JTextField prod_id;
     private javax.swing.JLabel productID2;
-    private javax.swing.JLabel qty;
-    private javax.swing.JTextField quantity;
-    private javax.swing.JTextField retail;
+    public javax.swing.JTextField retail;
     private javax.swing.JLabel retailprice;
-    private javax.swing.JLabel subtotal;
-    private javax.swing.JTextField txtsubtotal;
-    private javax.swing.JLabel unit;
-    private javax.swing.JLabel unit1;
     private javax.swing.JLabel unit2;
-    private javax.swing.JTextField warn;
+    private javax.swing.JButton updateProd;
+    public javax.swing.JTextField warn;
     private javax.swing.JLabel warnlevel;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,9 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmMain extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmMain
-     */
+    public static String Username;
     public frmMain() {
         initComponents();
         mnBar.setVisible(false);
@@ -35,8 +33,8 @@ public class frmMain extends javax.swing.JFrame {
         pnlLogin = new javax.swing.JPanel();
         pnlLoginForm = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
+        password = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         btnClear = new javax.swing.JButton();
@@ -90,22 +88,24 @@ public class frmMain extends javax.swing.JFrame {
 
         pnlMain.setLayout(new java.awt.CardLayout());
 
+        pnlLogin.setBackground(new java.awt.Color(0, 153, 153));
         pnlLogin.setLayout(new javax.swing.OverlayLayout(pnlLogin));
 
-        pnlLoginForm.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(248, 192, 61), 5, true));
+        pnlLoginForm.setBackground(new java.awt.Color(0, 255, 255));
+        pnlLoginForm.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 255), 5, true));
         pnlLoginForm.setMaximumSize(new java.awt.Dimension(450, 250));
         pnlLoginForm.setPreferredSize(new java.awt.Dimension(600, 450));
         pnlLoginForm.setRequestFocusEnabled(false);
         pnlLoginForm.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Username:");
+        username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        username.setText("Username:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Password:");
+        password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        password.setText("Password:");
 
         txtUsername.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtUsername.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -187,8 +187,8 @@ public class frmMain extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(13, 13, 13)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(username, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -214,10 +214,10 @@ public class frmMain extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ckbShowPassword)
@@ -282,6 +282,8 @@ public class frmMain extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
+        USERS.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        USERS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/users.png"))); // NOI18N
         USERS.setText("USERS");
         USERS.setFocusable(false);
         USERS.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -294,6 +296,8 @@ public class frmMain extends javax.swing.JFrame {
         jToolBar1.add(USERS);
         jToolBar1.add(jSeparator1);
 
+        HISTORY.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        HISTORY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/history.png"))); // NOI18N
         HISTORY.setText("HISTORY");
         HISTORY.setFocusable(false);
         HISTORY.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -301,6 +305,8 @@ public class frmMain extends javax.swing.JFrame {
         jToolBar1.add(HISTORY);
         jToolBar1.add(jSeparator2);
 
+        CATEGORY.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        CATEGORY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/category.png"))); // NOI18N
         CATEGORY.setText("CATEGORY");
         CATEGORY.setFocusable(false);
         CATEGORY.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -313,6 +319,8 @@ public class frmMain extends javax.swing.JFrame {
         jToolBar1.add(CATEGORY);
         jToolBar1.add(jSeparator3);
 
+        BRAND.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BRAND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/brand1.png"))); // NOI18N
         BRAND.setText("BRAND");
         BRAND.setFocusable(false);
         BRAND.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -325,6 +333,8 @@ public class frmMain extends javax.swing.JFrame {
         jToolBar1.add(BRAND);
         jToolBar1.add(jSeparator4);
 
+        supplier.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        supplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/supplier.png"))); // NOI18N
         supplier.setText("SUPPLIER");
         supplier.setFocusable(false);
         supplier.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -337,6 +347,8 @@ public class frmMain extends javax.swing.JFrame {
         jToolBar1.add(supplier);
         jToolBar1.add(jSeparator5);
 
+        unit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        unit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/unit1.png"))); // NOI18N
         unit.setText("UNIT");
         unit.setFocusable(false);
         unit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -349,6 +361,8 @@ public class frmMain extends javax.swing.JFrame {
         jToolBar1.add(unit);
         jToolBar1.add(jSeparator6);
 
+        color.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        color.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/color.png"))); // NOI18N
         color.setText("COLOR");
         color.setFocusable(false);
         color.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -361,6 +375,8 @@ public class frmMain extends javax.swing.JFrame {
         jToolBar1.add(color);
         jToolBar1.add(jSeparator7);
 
+        refresh.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refresh.png"))); // NOI18N
         refresh.setText("REFRESH");
         refresh.setFocusable(false);
         refresh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -385,7 +401,10 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.PAGE_AXIS));
 
+        PRODUCT.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        PRODUCT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/product.png"))); // NOI18N
         PRODUCT.setText("PRODUCTS");
+        PRODUCT.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         PRODUCT.setMaximumSize(new java.awt.Dimension(150, 35));
         PRODUCT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -394,19 +413,41 @@ public class frmMain extends javax.swing.JFrame {
         });
         jPanel5.add(PRODUCT);
 
+        INVENTORY.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        INVENTORY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/inventory-icon-png-10.png"))); // NOI18N
         INVENTORY.setText("INVENTORY");
+        INVENTORY.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         INVENTORY.setMaximumSize(new java.awt.Dimension(150, 35));
         jPanel5.add(INVENTORY);
 
+        SALES.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        SALES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sales.png"))); // NOI18N
         SALES.setText("SALES");
+        SALES.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         SALES.setMaximumSize(new java.awt.Dimension(150, 35));
+        SALES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SALESActionPerformed(evt);
+            }
+        });
         jPanel5.add(SALES);
 
+        STOCKS.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        STOCKS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Stocks-Icon.png"))); // NOI18N
         STOCKS.setText("STOCKS");
+        STOCKS.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         STOCKS.setMaximumSize(new java.awt.Dimension(150, 35));
+        STOCKS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                STOCKSActionPerformed(evt);
+            }
+        });
         jPanel5.add(STOCKS);
 
+        REPORTS.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        REPORTS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/report3.png"))); // NOI18N
         REPORTS.setText("REPORTS");
+        REPORTS.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         REPORTS.setMaximumSize(new java.awt.Dimension(150, 35));
         jPanel5.add(REPORTS);
 
@@ -493,15 +534,15 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        //SystemLogin();
-        //successLogin
+      
+
         pnlMain.removeAll();
         pnlMain.add(pnlAdmin);
         pnlMain.repaint();
         pnlMain.revalidate();
         mnBar.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
-
+    
     private void ckbShowPasswordItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckbShowPasswordItemStateChanged
         if (ckbShowPassword.isSelected()) {
             txtPassword.setEchoChar((char) 0);
@@ -516,7 +557,7 @@ public class frmMain extends javax.swing.JFrame {
         pnlCenterDisplay.add(account);
         pnlCenterDisplay.repaint();
         pnlCenterDisplay.revalidate();
-        
+
 
     }//GEN-LAST:event_userAccountActionPerformed
 
@@ -530,6 +571,11 @@ public class frmMain extends javax.swing.JFrame {
 
     private void USERSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_USERSActionPerformed
         // TODO add your handling code here:
+        pnlUserAccount account = new pnlUserAccount(this);
+        pnlCenterDisplay.removeAll();
+        pnlCenterDisplay.add(account);
+        pnlCenterDisplay.repaint();
+        pnlCenterDisplay.revalidate();
     }//GEN-LAST:event_USERSActionPerformed
 
     private void CATEGORYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CATEGORYActionPerformed
@@ -562,6 +608,24 @@ public class frmMain extends javax.swing.JFrame {
         dlgNewColor newcolor = new dlgNewColor(this, true);
         newcolor.setVisible(true);
     }//GEN-LAST:event_colorActionPerformed
+
+    private void SALESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SALESActionPerformed
+        // TODO add your handling code here:
+        pnlSales sales = new pnlSales();
+        pnlCenterDisplay.removeAll();
+        pnlCenterDisplay.add(sales);
+        pnlCenterDisplay.repaint();
+        pnlCenterDisplay.revalidate();
+    }//GEN-LAST:event_SALESActionPerformed
+
+    private void STOCKSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STOCKSActionPerformed
+        // TODO add your handling code here:
+        pnlStocks stocks = new pnlStocks();
+        pnlCenterDisplay.removeAll();
+        pnlCenterDisplay.add(stocks);
+        pnlCenterDisplay.repaint();
+        pnlCenterDisplay.revalidate();
+    }//GEN-LAST:event_STOCKSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -616,8 +680,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton color;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
@@ -640,6 +702,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JMenuBar mnBar;
+    private javax.swing.JLabel password;
     private javax.swing.JPanel pnlAdmin;
     private javax.swing.JPanel pnlCenter;
     private javax.swing.JPanel pnlCenterDisplay;
@@ -655,6 +718,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsername;
     private javax.swing.JButton unit;
     private javax.swing.JMenuItem userAccount;
+    private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 
 }

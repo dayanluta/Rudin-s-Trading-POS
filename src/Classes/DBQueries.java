@@ -85,6 +85,26 @@ public class DBQueries {
         }
     }
 
+    public void StockID() {
+        try {
+            String sql = "Select count(stock_id) as count FROM STOCK.stock_table";
+            rs = st.executeQuery(sql);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    
+    
+    }
+
+    public void TransactionNo() {
+        try {
+            String sql = "Select count(sales_id) as count FROM SALES.sales_table";
+            rs = st.executeQuery(sql);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public int insertNewUserAccount(String username, String password, String fullname, String role) {
         //public int to convert database.insertNewUserAccount(Username, Password, fullname,role);
         try {
@@ -97,6 +117,17 @@ public class DBQueries {
             return 0;
         }
 
+    }
+
+    public int CustomerDiscount(String disType, Double percentage) {
+        try {
+            String sql = "INSERT INTO CUSTOMER.discount_table VALUES('" + disType + "','" + percentage + "')";
+            return st.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            return 0;
+        }
     }
 
     public void insertUserAccount(String username) {
@@ -151,6 +182,14 @@ public class DBQueries {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+//    public void getCategoryProductforUpdate(String category_name){
+//        try{
+//            String sql = "SELECT category_id from PRODUCT.category_table where category_name ='"+category_name+"'";
+//        }catch(Exception e){
+//             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
 
     public void viewSupplierName() {
         try {
@@ -160,6 +199,8 @@ public class DBQueries {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    
 
     public void viewBrandName() {
         try {
@@ -178,16 +219,16 @@ public class DBQueries {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    public void viewPRODUCTS(){
-        try{
+
+    public void viewPRODUCTS() {
+        try {
 //            String sql = "Select a.prod_code,a.prod_description,a.cost_price,a.retail_price, a.discount,a.warn_level,b.category_id, c.brand_code,"
 //                    + "d.color_code from PRODUCT.product_table a, PRODUCT.category_table b, PRODUCT.brand_table c, PRODUCT.color_table d where ";
-               String sql = "SELECT prod_code,category_name,brand_name,color_name,prod_description,color_name,cost_price,retail_price,discount,warn_level from PRODUCT.product_table A,"
-                       + "PRODUCT.category_table B,PRODUCT.brand_table C, PRODUCT.color_table D WHERE A.category_id = B.category_id and A.brand_code = C.brand_code and A.color_code = D.color_code";
-            
+            String sql = "SELECT prod_code,category_name,brand_name,unit_name,prod_description,color_name,cost_price,retail_price,discount,warn_level from PRODUCT.product_table A,"
+                    + "PRODUCT.category_table B,PRODUCT.brand_table C, PRODUCT.color_table D, PRODUCT.unit_table E WHERE A.category_id = B.category_id and A.brand_code = C.brand_code and A.color_code = D.color_code and A.unit_code = E.unit_code";
+
             rs = st.executeQuery(sql);
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -218,6 +259,17 @@ public class DBQueries {
         }
     }
 
+//    public int SalesProcess(String input_procode){
+//        try{
+//            String sql = "Select prod_name,prod_description,unit_name,retail_price FROM PRODUCT.product_table A, PRODUCT.unit_table B where A.unit_code = B.unit_code and prod_code = '"+input_procode+"'";
+//        
+//            rs = st.executeQuery(sql);
+//        }catch(Exception e){
+//            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+//            return 0;
+//        }
+//       
+//    }
     public int updateUserPassword(String username, String confirm_pwrd) {
         try {
             String sql = "UPDATE USER_TB.user_table SET password=md5('" + confirm_pwrd + "') WHERE username='" + username + "' ";
@@ -255,34 +307,68 @@ public class DBQueries {
         }
     }
 
-//     public void ListOfUserAccount() {
-//        try {
-//            String sql = "SELECT * FROM USER_TB.user_tb order by fullname";
-//
-//            rs = st.executeQuery(sql);
-//
-//        } catch (SQLException e) {
-//            Toolkit.getDefaultToolkit().beep();
-//            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-//        }
-//    }
-//     public int insertNewProduct(String prod_code, String category, String brand, String description,String color,String unit_name,
-//             String supplier,Date date_purchase,Date exp_date,String invoice_number,int qty, double cost_price,double retail_price,
-//             int warn_level,double discount1, double sub_total){
-//     //public int to convert database.insertNewUserAccount(Username, Password, fullname,role);
-//        try{
-//            String sql= "INSERT INTO PRODUCT.product_table VALUES('" + prod_code + "','" + description + "','" + category + "','"+retail_price+"','"+unit_name+"',"
-//                    + "'"+unit_name+"','"+date_purchase+"','"+brand+"', '"+qty+"', '"+color+"', '"+supplier+"', "
-//                    + "'"+invoice_number+"','"+cost_price+"', '"+warn_level+"', '"+discount1+"', '"+exp_date+"','"+sub_total+"')";
-//           
-//            return st.executeUpdate(sql);
-//            
-//        }catch(SQLException e){
-//            JOptionPane.showMessageDialog(null,e.getMessage(),"ERROR", JOptionPane.ERROR_MESSAGE);
-//            return 0;
-//        }
-//        
-//    }
+    public int UpdateProduct(String prodCode, String category, String brand, String description, String unit, double cost_price,
+            double retail_price, double discount, int warnlevel) {
+        try {
+            String sql = "UPDATE PRODUCT.product_table SET prod_code='" + prodCode + "' , prod_description = '" + description + "', retail_price = '" + retail_price + "',"
+                    + "cost_price='" + cost_price + "',discount = '"+discount+"' ,category_id =(Select category_id from PRODUCT.category_table where category_name ='" + category + "'),"
+                    + "brand_code = (Select brand_code from PRODUCT.brand_table where brand_name = '" + brand + "'),"
+                    + "unit_code = (Select unit_code from PRODUCT.unit_table where unit_name = '"+unit+"'), warn_level = '"+warnlevel+"' WHERE prod_code = '" + prodCode + "'";
+            return st.executeUpdate(sql);
+        } catch (SQLException e) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            return 0;
+        }
+
+    }
+    
+     public int UpdateBrand(String brandcode, String brandname) {
+        try {
+             String sql = "UPDATE PRODUCT.brand_table SET brand_code='" + brandcode + "',brand_name='"+ brandname+"' WHERE brand_code = '" + brandcode + "'";
+            return st.executeUpdate(sql);
+        } catch (SQLException e) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            return 0;
+        }
+     }
+        
+      public int UpdateColor(String colorcode, String colorname) {
+        try {
+             String sql = "UPDATE PRODUCT.color_table SET color_code='" + colorcode + "',color_name='"+ colorname+"' WHERE color_code = '" + colorcode + "'";
+            return st.executeUpdate(sql);
+        } catch (SQLException e) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            return 0;
+        }
+     }
+    public int UpdateUnit(String unitcode, String unitname) {
+        try {
+             String sql = "UPDATE PRODUCT.unit_table SET unit_code='" + unitcode + "',unit_name='"+ unitname+"' WHERE unit_code = '" + unitcode + "'";
+            return st.executeUpdate(sql);
+        } catch (SQLException e) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            return 0;
+        }
+    }
+     
+      public int UpdateNewSupplier(String suppliercode, String suppliername, String Address, String Email, String Contact) {
+        try {
+       String sql = "UPDATE SUPPLIER.supplier_table SET sup_id='" + suppliercode + "', sup_name='"+ suppliername+"', sup_address='"+ Address +"',sup_email='"+ Email +"', sup_contact='"+ Contact +"' WHERE sup_id = '" + suppliercode + "'";
+//                String sql = "UPDATE SUPPLIER.supplier_table SET sup_id='" + suppliercode + "'"
+            return st.executeUpdate(sql);
+            
+        } catch (SQLException e) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            return 0;
+        }
+      }
+
+
     public void checkProduct_code(String prod_code) {
         try {
             String sql = "SELECT * FROM PRODUCT.product_table where prod_code='" + prod_code + "'";
@@ -395,6 +481,29 @@ public class DBQueries {
             JOptionPane.showConfirmDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             return 0;
         }
+    }
+
+    public void searchProductForStocks(String product_code) {
+        try {
+            String sql = "SELECT prod_code,category_name,brand_name,color_name,prod_description,color_name,cost_price,retail_price,invoicenumber,prod_quantity,date_purchase,expirationdate,unit_name,sup_name from PRODUCT.product_table A,"
+                    + "PRODUCT.category_table B,PRODUCT.brand_table C, PRODUCT.color_table D , PRODUCT.unit_table E ,SUPPLIER.supplier_table F "
+                    + "WHERE A.category_id = B.category_id and A.brand_code = C.brand_code and  A.color_code = D.color_code and A.unit_code = E.unit_code and A.sup_id = F.sup_id and A.prod_code='" + product_code + "'";
+            rs = st.executeQuery(sql);
+        } catch (SQLException e) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void salesProcess(String procode) {
+        try {
+            String sql = "Select prod_code,prod_description,unit_name,retail_price FROM PRODUCT.product_table A, PRODUCT.unit_table B WHERE A.unit_code = B.unit_code and A.prod_code = '" + procode + "'";
+            rs = st.executeQuery(sql);
+        } catch (SQLException e) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
 }

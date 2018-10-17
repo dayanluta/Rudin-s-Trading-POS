@@ -74,12 +74,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" alignment="1" pref="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="136" max="32767" attributes="0"/>
-                                  <Component id="saveNewUnit" min="-2" pref="113" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton1" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="UPDATE" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="saveNewUnit" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jButton1" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
@@ -101,10 +104,11 @@
                               <Component id="jPanel5" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                               <Component id="jPanel6" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="saveNewUnit" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="UPDATE" alignment="3" max="32767" attributes="0"/>
+                              <Component id="saveNewUnit" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="jButton1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -117,6 +121,9 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="14" style="1"/>
                     </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Images/cancel.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="CANCEL"/>
                   </Properties>
                 </Component>
@@ -124,6 +131,9 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="2" name="C:\Users\Acer\Documents\NetBeansProjects\Rudin-s-Trading-POS0923\src\Images\save 1.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="SAVE"/>
                   </Properties>
@@ -225,6 +235,20 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JButton" name="UPDATE">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Images/update.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="UPDATE"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UPDATEActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>

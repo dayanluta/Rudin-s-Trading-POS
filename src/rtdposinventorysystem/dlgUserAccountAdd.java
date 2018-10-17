@@ -113,7 +113,8 @@ public class dlgUserAccountAdd extends javax.swing.JDialog {
         jPanel6.add(comborole);
 
         ADD.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ADD.setText("ADD");
+        ADD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save 1.png"))); // NOI18N
+        ADD.setText("SAVE");
         ADD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ADDActionPerformed(evt);
@@ -121,6 +122,7 @@ public class dlgUserAccountAdd extends javax.swing.JDialog {
         });
 
         cancel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel.png"))); // NOI18N
         cancel.setText("CANCEL");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -136,7 +138,7 @@ public class dlgUserAccountAdd extends javax.swing.JDialog {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ADD, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -149,8 +151,8 @@ public class dlgUserAccountAdd extends javax.swing.JDialog {
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ADD, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ADD, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -178,7 +180,7 @@ public class dlgUserAccountAdd extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

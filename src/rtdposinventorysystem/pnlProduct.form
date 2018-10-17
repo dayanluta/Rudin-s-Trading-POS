@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="ff" green="cc" red="cc" type="rgb"/>
+      <Color blue="cc" green="cc" red="0" type="rgb"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -22,34 +22,30 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="addProdct" min="-2" pref="131" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="addProdct2" min="-2" pref="131" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="addProdct" min="-2" pref="128" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="updateProduct" min="-2" pref="128" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="addProdct1" min="-2" pref="208" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jComboBox1" min="-2" pref="166" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" min="-2" pref="166" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="224" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane2" min="-2" pref="967" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jTextField1" min="-2" pref="224" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jScrollPane2" min="-2" pref="1091" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,17 +69,19 @@
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="310" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" pref="303" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="addProdct" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
-                  <Component id="addProdct1" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
-                  <Component id="addProdct2" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="addProdct1" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="updateProduct" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="addProdct" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -97,6 +95,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/add 2.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="ADD"/>
       </Properties>
@@ -139,21 +140,27 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/barcode111.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="GENERATES BARCODE"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addProdct1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="addProdct2">
+    <Component class="javax.swing.JButton" name="updateProduct">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/update.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="UPDATE"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addProdct2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateProductActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -162,28 +169,38 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
         <Component class="javax.swing.JTable" name="product_table">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="9" rowCount="0">
+              <Table columnCount="11" rowCount="0">
+                <Column editable="false" title="No." type="java.lang.Object"/>
                 <Column editable="false" title="PRODUCT ID" type="java.lang.Object"/>
-                <Column editable="false" title="CATEGORY" type="java.lang.Object"/>
-                <Column editable="false" title="BRAND NAME" type="java.lang.Object"/>
-                <Column editable="false" title="DESCRIPTION" type="java.lang.Object"/>
-                <Column editable="false" title="COLOR" type="java.lang.Object"/>
-                <Column editable="false" title="COST PRICE" type="java.lang.Object"/>
-                <Column editable="false" title="RETAIL PRICE" type="java.lang.Object"/>
+                <Column editable="false" title="CATEGORY" type="java.lang.String"/>
+                <Column editable="false" title="BRAND NAME" type="java.lang.String"/>
+                <Column editable="false" title="DESCRIPTION" type="java.lang.String"/>
+                <Column editable="false" title="UNIT" type="java.lang.String"/>
+                <Column editable="false" title="COLOR" type="java.lang.String"/>
+                <Column editable="false" title="COST PRICE" type="java.lang.Double"/>
+                <Column editable="false" title="RETAIL PRICE" type="java.lang.Double"/>
                 <Column editable="false" title="DISCOUNT" type="java.lang.Object"/>
-                <Column editable="false" title="WARN LEVEL" type="java.lang.Object"/>
+                <Column editable="false" title="WARN LEVEL" type="java.lang.Integer"/>
               </Table>
             </Property>
             <Property name="autoResizeMode" type="int" value="0"/>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="120" minWidth="120" prefWidth="120" resizable="true">
+                <Column maxWidth="30" minWidth="30" prefWidth="30" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="100" minWidth="100" prefWidth="100" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -199,6 +216,11 @@
                   <Renderer/>
                 </Column>
                 <Column maxWidth="150" minWidth="150" prefWidth="150" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>

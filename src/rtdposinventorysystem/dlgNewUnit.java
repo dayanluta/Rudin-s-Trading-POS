@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Acer
  */
 public class dlgNewUnit extends javax.swing.JDialog {
-
+frmMain updateunit;
     /**
      * Creates new form dlgNewUnit
      */
@@ -69,6 +69,7 @@ public class dlgNewUnit extends javax.swing.JDialog {
         jPanel6 = new javax.swing.JPanel();
         unit_code = new javax.swing.JTextField();
         unit_name = new javax.swing.JTextField();
+        UPDATE = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -82,9 +83,11 @@ public class dlgNewUnit extends javax.swing.JDialog {
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel.png"))); // NOI18N
         jButton1.setText("CANCEL");
 
         saveNewUnit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        saveNewUnit.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Rudin-s-Trading-POS0923\\src\\Images\\save 1.png")); // NOI18N
         saveNewUnit.setText("SAVE");
         saveNewUnit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +137,15 @@ public class dlgNewUnit extends javax.swing.JDialog {
         unit_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPanel6.add(unit_name);
 
+        UPDATE.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        UPDATE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/update.png"))); // NOI18N
+        UPDATE.setText("UPDATE");
+        UPDATE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UPDATEActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -141,12 +153,15 @@ public class dlgNewUnit extends javax.swing.JDialog {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 136, Short.MAX_VALUE)
-                        .addComponent(saveNewUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54)
+                        .addComponent(UPDATE, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(saveNewUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
@@ -162,10 +177,11 @@ public class dlgNewUnit extends javax.swing.JDialog {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveNewUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UPDATE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(saveNewUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -175,7 +191,7 @@ public class dlgNewUnit extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
         jPanel3.setPreferredSize(new java.awt.Dimension(400, 50));
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -222,6 +238,19 @@ public class dlgNewUnit extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_saveNewUnitActionPerformed
 
+    private void UPDATEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UPDATEActionPerformed
+        // TODO add your handling code here:
+         dlgUpdateUnit update = new dlgUpdateUnit(updateunit, true);
+
+        int i = unit_table.getSelectedRow();
+        try {
+            update.setData(unit_table.getValueAt(i, 1).toString(), unit_table.getValueAt(i, 2).toString());
+            update.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Please Select a row");
+        }
+    }//GEN-LAST:event_UPDATEActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -265,6 +294,7 @@ public class dlgNewUnit extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton UPDATE;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

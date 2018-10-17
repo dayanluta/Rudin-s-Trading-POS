@@ -37,39 +37,6 @@ public class pnlUserAccount extends javax.swing.JPanel {
          viewUser();
     }
 
-//   public void refresh(){
-//       DBQueries database5 = new DBQueries();
-//       DefaultTableModel model=(DefaultTableModel) user_table.getModel(); //*cast to the table*//
-//     try{
-//            database5.ConnectToDatabase();
-//            database5.ListOfUserAccount();
-//                /*displaying the data from database to the table in customer.java*/
-//                model.setRowCount(0);
-//                while(database5.rs.next()){ //*the result set to addrow*//
-//                    model.addRow(new Object[]{
-//                        false,
-//                        rs.getInt("cus_id"),
-//                        rs.getString("cus_lname"),
-//                        rs.getString("cus_fname"),
-//                        rs.getString("cus_mname"),
-//                        rs.getString("cus_address"),
-//                        rs.getString("cus_email"),
-//                        rs.getString("cus_contact"),
-//                    });
-//                }
-//                rs.close();
-//                st.execute(sql);
-//                st.close();
-//                con.close();
-//               
-//                
-//            
-//        }catch(Exception e){
-//            JOptionPane.showMessageDialog(null,e.getMessage());
-//        }
-// }
-    
-    
    void viewUser(){
         DBQueries database1= new DBQueries();
         DefaultTableModel model = (DefaultTableModel) user_table.getModel();
@@ -128,14 +95,25 @@ public class pnlUserAccount extends javax.swing.JPanel {
             new String [] {
                 "No.", "Username", "Fullname", "Role", "Date Created", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         user_table.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(user_table);
 
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.GridLayout(4, 0, 0, 2));
 
+        ADDUSER.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ADDUSER.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/user-add-icon.png"))); // NOI18N
         ADDUSER.setText("ADD USER");
+        ADDUSER.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ADDUSER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ADDUSERActionPerformed(evt);
@@ -143,7 +121,10 @@ public class pnlUserAccount extends javax.swing.JPanel {
         });
         jPanel1.add(ADDUSER);
 
+        EDITACCOUNT.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        EDITACCOUNT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Edit_user.png"))); // NOI18N
         EDITACCOUNT.setText("EDIT ACCOUNT");
+        EDITACCOUNT.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         EDITACCOUNT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EDITACCOUNTActionPerformed(evt);
@@ -151,7 +132,10 @@ public class pnlUserAccount extends javax.swing.JPanel {
         });
         jPanel1.add(EDITACCOUNT);
 
+        CHANGE_PASSWORD.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        CHANGE_PASSWORD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/change pass.png"))); // NOI18N
         CHANGE_PASSWORD.setText("CHANGE PASSWORD");
+        CHANGE_PASSWORD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         CHANGE_PASSWORD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CHANGE_PASSWORDActionPerformed(evt);
@@ -159,7 +143,10 @@ public class pnlUserAccount extends javax.swing.JPanel {
         });
         jPanel1.add(CHANGE_PASSWORD);
 
+        changeStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        changeStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/change status.png"))); // NOI18N
         changeStatus.setText("CHANGE STATUS");
+        changeStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         changeStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changeStatusActionPerformed(evt);
@@ -172,11 +159,11 @@ public class pnlUserAccount extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
-                .addGap(26, 26, 26)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
+                .addGap(40, 40, 40)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
